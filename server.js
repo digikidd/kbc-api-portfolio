@@ -16,7 +16,7 @@ var server = http.createServer (app);
 var port = process.env.PORT || 3131;
 
 //Database connection
-mongoose.connect ('mongodb://admin:admin@ds029466.mlab.com:29466/kbc-projects'); //Connect with mongolab service
+mongoose.connect ('mongodb://admin:admin@ds029466.mlab.com:29466/kbc-projects');
 
 //Feedback of the connection (if error or if succeed)
 var db = mongoose.connection;

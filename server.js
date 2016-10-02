@@ -21,9 +21,6 @@ mongoose.connect ('mongodb://admin:admin@ds029466.mlab.com:29466/kbc-projects');
 //Feedback of the connection (if error or if succeed)
 var db = mongoose.connection;
 db.on ('error', console.error.bind (console, 'connection error:'));
-db.once ('open', function () {
-    // console.log ("Connected to DB!");
-});
 
 // configuration =================
 app.use (bodyParser.json ()); //To be able to use json
@@ -32,7 +29,6 @@ app.use (morgan ('dev')); //Logger
 
 //Routes
 app.use('/portfolio', portfolioroutes);
-
 
 //We start the server
 server.listen (port);

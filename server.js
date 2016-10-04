@@ -26,6 +26,18 @@ db.on ('error', console.error.bind (console, 'connection error:'));
 app.use (bodyParser.json ()); //To be able to use json
 app.use (bodyParser.urlencoded ({extended: true}));
 app.use (morgan ('dev')); //Logger
+app.all('*', function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'accept, content-type, x-parse-application-id, x-parse-rest-api-key, x-parse-session-token');
+    // intercept OPTIONS method
+    if ('OPTIONS' == req.method) {
+        res.send(200);
+    }
+    else {
+        next();
+    }
+});
 
 //Routes
 app.use('/portfolio', portfolioroutes);
